@@ -1,0 +1,30 @@
+.cardStyle{
+    width: 40rem !important;
+    height: 20rem !important;
+    margin-top: 5%;
+    box-shadow: 0 4px 15px 0 rgba(7, 34, 66, 0.2);
+    border-radius: 3.25rem;   
+    margin: 0 auto;
+    margin-top: 10%; 
+    /* margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px; */
+}
+
+.cardStyle input{
+    margin: 2rem;
+    padding: 1.5rem;
+    /* width: 25rem; */
+}
+
+.cardStyle h3{
+   margin: 0 auto;
+   margin-top: 1rem;
+}
+
+.cardStyle button{
+   background-color: #2e3d80;
+}
+.cardStyle button:hover{
+   background-color: #24326e;
+}
