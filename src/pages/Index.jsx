@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import * as chatClientActions from './chatClient/chatClientActions'
 import { bindActionCreators } from 'redux'
+import { Redirect } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';
 
 
@@ -10,34 +11,46 @@ import './index.css';
 
 
 class Index extends Component {
-   
-       state = {
+
+   constructor(props){
+       super(props)
+        this.state = {
             loadingbar: false
         }
-    
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
 
 
     async onSubmit(e) {
         e.preventDefault();
-        this.changeloading();
-        
+
+        this.changeLoading();
+
         const values = {
             name: e.target.name,
             nameSponsored: e.target.nameSponsored
         }
-        
+
+        setTimeout(async()=>{
         await this.props.EnterChat(values);
-        
-        this.changeloading();
+        }, 1000);
+
+        this.changeLoading();
     }
 
-    changeloading() {
-        this.setState({loadingbar: !this.state.loadingbar});
+    changeLoading() {
+        this.setState({ loadingbar: !this.state.loadingbar });
     }
 
 
 
     render() {
+        console.log('props client', this.props.clientEnter)
+        if (this.props.clientEnter == true) {
+            return <Redirect to='/homeClient' />
+        }
+
         return (
             <div className='container-fluid'>
                 <div className="row justify-content-center">
@@ -46,7 +59,7 @@ class Index extends Component {
                         <h3>Solicitar Atendimento</h3>
 
                         <div className="cardBody">
-                            <form>
+                            <form onSubmit={this.onSubmit}>
                                 <input type="text" className="form-control" name="name" placeholder="Digite Seu Nome" required />
                                 <input type="text" className="form-control" name="nameSponsored" placeholder="Digite Nome da Franquia" required />
 
@@ -71,13 +84,17 @@ class Index extends Component {
             </div>
         );
     }
+
+
 }
 
 
-
+const mapStateToProps = state => ({
+    clientEnter: state.ChatClient.clientEnter
+})
 
 const mapDispatchToProps = dispatch => (
     bindActionCreators(chatClientActions, dispatch)
 )
 
-export default connect(null, mapDispatchToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

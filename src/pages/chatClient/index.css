@@ -1,0 +1,27 @@
+.cardChatStyle{
+    box-shadow: 0 4px 15px 0 rgba(7, 34, 66, 0.2);
+    border-radius: 3.25rem;   
+    margin: 0 auto;
+    margin-top: 5%; 
+    padding: 0.5rem;
+}
+
+.contentChat{
+    background-color: #d3d3d326;
+    height: 25rem;
+}
+
+.contentTypeChat{
+    height: 3rem;
+}
+
+.cardChatFooter{
+    height: 5rem !important;
+
+}
+
+.inputChat{
+    height: 4rem !important;
+    margin: 0 auto;
+    margin-top: -0.2rem;
+}

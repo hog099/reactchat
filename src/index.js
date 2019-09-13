@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom'
 // import * as serviceWorker from './serviceWorker';
 
 import { createStore, applyMiddleware } from 'redux'
-import rootReducer from './rooteReducer'
+import rootReducer from './rootReducer'
 import { Provider } from 'react-redux'
 import ReduxToastr from 'react-redux-toastr'
 import thunk from 'redux-thunk';
