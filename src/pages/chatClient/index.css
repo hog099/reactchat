@@ -1,13 +1,28 @@
 .cardChatStyle{
-    box-shadow: 0 4px 15px 0 rgba(7, 34, 66, 0.2);
+    box-shadow: 0 4px 15px 0 #07224233;
     border-radius: 3.25rem;   
     margin: 0 auto;
     margin-top: 5%; 
     padding: 0.5rem;
 }
 
+.cardChat{
+    border-style: ridge;
+    border-color: #2e2d2d2f;
+
+}
+
+.cardChatStyle h3{
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
+.cardHeader{
+    background-color: #f9f9f9 !important;
+}
+
 .contentChat{
-    background-color: #d3d3d326;
+    background-color: #d3d3d31c;
     height: 25rem;
 }
 
@@ -16,6 +31,7 @@
 }
 
 .cardChatFooter{
+    background-color: #f9f9f9 !important;
     height: 5rem !important;
 
 }

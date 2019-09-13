@@ -10,7 +10,11 @@ const chatClient = () => {
 
                 <h3>Atendimento em Andamento</h3>
 
-                <div className="card-header">
+
+
+                <div className="cardChat">
+                
+                <div className="card-header cardHeader">
                     <p>#15156 - Franquia</p>
                 </div>
 
@@ -28,6 +32,9 @@ const chatClient = () => {
                         <input type="text" name="textchat" className="form-control inputChat" placeholder="Digite uma Mensagem" />
                     </div>
 
+                </div>
+
+                
                 </div>
 
             </div>
