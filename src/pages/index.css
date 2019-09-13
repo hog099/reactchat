@@ -1,6 +1,6 @@
 .cardStyle{
     width: 40rem !important;
-    height: 20rem !important;
+    min-height: 20rem !important;
     margin-top: 5%;
     box-shadow: 0 4px 15px 0 rgba(7, 34, 66, 0.2);
     border-radius: 3.25rem;   
@@ -29,4 +29,8 @@
 }
 .cardStyle button:hover{
    background-color: #24326e;
+}
+
+.cardStyle a{
+    margin: 2rem;
 }

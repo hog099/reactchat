@@ -46,7 +46,7 @@ class Index extends Component {
 
 
     render() {
-        console.log('props client', this.props.clientEnter)
+       
         if (this.props.clientEnter == true) {
             return <Redirect to='/homeClient' />
         }

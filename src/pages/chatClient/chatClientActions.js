@@ -6,9 +6,10 @@ export function EnterChat(values) {
     return dispatch => {
         const { name, nameSponsored } = values
      
-                toastr.success('Bem-Vindo!', 'Você está logado.') 
+                toastr.success('Bem-Vindo!') 
                 dispatch({ type: 'CLIENT_ENTER_CHAT', payload: true })               
             
 
     }
 }
+
