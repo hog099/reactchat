@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import * as chatClientActions from './chatClient/chatClientActions'
+import * as chatClientActions from './chatclient/chatClientActions'
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';

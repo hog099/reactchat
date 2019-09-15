@@ -1,10 +1,10 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import AuthorApp from './pages/auth/authorpainel'
-import HomeSite from './pages/index'
-import HomeClient from './pages/chatclient/index'
-import Painel from './pages/painel/index'
+import AuthorApp from './site/auth/authorpainel'
+import HomeSite from './site/index'
+import HomeClient from './site/chatclient/index'
+import Painel from './site/painel/index'
 
 function Routes() {
     return (
