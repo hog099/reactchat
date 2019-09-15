@@ -11,6 +11,7 @@ export function sendChatMessage(chatFrom, chatTo, content) {
     
     return dispatch => {
 
+        if(content !== ''){
         // Adicionar mensagem no banco
         chatRef.doc(chatTo.id).collection('messages').add({
             content,
@@ -21,6 +22,8 @@ export function sendChatMessage(chatFrom, chatTo, content) {
         });
 
         document.getElementById('inputChatAgent').value = '';
+
+    }
 
 
     }
@@ -82,7 +85,7 @@ export function getChats() {
             const chatList = []
             docs.forEach(doc => {
                 // console.log(doc.id)
-                if(doc.data().status != 'finalizado'){
+                if(doc.data().status !== 'finalizado'){
                 const chat = {
                     id: doc.id,
                     agent: doc.data().agent,
@@ -132,8 +135,8 @@ export function selectChat(chatId, agent) {
 
         chatRef.doc(chatId).get().then(chat => {
             //console.log('chat', chat.data())
-            if (chat.data().status == 'atendendo') {                
-                if(!chat.data().agent == agent.uid){
+            if (chat.data().status === 'atendendo') {                
+                if(!chat.data().agent === agent.uid){
                     toastr.warning('Chat sendo atendido por outro Agente.');
                 }
             } else {

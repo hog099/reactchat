@@ -49,21 +49,28 @@
 
 
 
+
+
+
 .incoming_msg {
     margin: 25px 0 26px;
 }
 
 .received_msg {
-    background: #94999c;
+    background: #e1e3e4;
     display: inline-block;
     padding: 0 0 0 10px;
     vertical-align: top;
     width: 70%;
+    margin-left: 0.5rem;
+    border-radius: 3px;
 }
 
 .outgoing_msg{ 
     overflow:hidden; 
-    margin:26px 0 26px;
+    /* margin:26px 0 26px; */
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .sent_msg {
@@ -72,10 +79,11 @@
   }
 
 .sent_msg p {
-    background: #0683f8 none repeat scroll 0 0;
+    background: #3491e8 none repeat scroll 0 0;
     border-radius: 3px;
     font-size: 14px;
-    margin: 0; color:#fff;
+    /* margin: 0;  */
+    color:#fff;
     padding: 5px 10px 5px 12px;
     width:100%;
 }

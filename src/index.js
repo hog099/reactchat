@@ -18,8 +18,8 @@ import '../node_modules/jquery/dist/jquery.min.js'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css'
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-    && window.__REDUX_DEVTOOLS_EXTENSION__()
+// const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
+//     && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 

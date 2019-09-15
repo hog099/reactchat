@@ -1,6 +1,7 @@
 const INICIAL_STATE = {
     clientEnter: false,
     chatFinish: false,
+    chatFinishClient: false,
     chatData: '',
     listMessages: '',
 }
@@ -21,6 +22,9 @@ export default (state = INICIAL_STATE, action) => {
 
         case 'CHAT_FINISHED':
             return { ...state, chatFinish: action.payload }
+
+        case 'GET_CHAT_STATUS':
+            return { ...state, chatFinishClient: action.payload }
 
         default:
             return state

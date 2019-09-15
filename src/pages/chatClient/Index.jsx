@@ -3,29 +3,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as chatClientActions from './chatClientActions';
 import { bindActionCreators } from 'redux';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import './index.css';
 
 class chatClient extends Component {
 
-  
+    state ={
+        checkStatus: ''
+    }
+
     componentWillMount() {
-        const chat = JSON.parse(localStorage.getItem('_chatData')); 
+        const chat = JSON.parse(localStorage.getItem('_chatData'));
         if (chat) {
             this.props.setChatData(chat.id);
         }
-        this.props.messagesList(chat.id);
-                
+        if (!this.props.chatFinishClient) {
+            this.props.messagesList(chat.id);
+        }
+
     }
 
-    // componentDidMount(){
-    //     setInterval(()=>{ 
-    //         this.checkStatus(); 
-    //     }, 30000);
-    // }
-    
-    
+    componentDidMount() {
+        let intervalStatus = setInterval(() => {
+            this.checkStatus();
+        }, 6000);
+
+        this.setState({checkStatus: intervalStatus});
+
+    }
+
+    componentWillUnmount(){
+        if (this.props.chatFinishClient) {
+            clearInterval(this.state.checkStatus);
+        }
+    }
+
+
+
     handleSubmit = e => {
         e.preventDefault();
         // console.log(e.target.textchat.value)
@@ -35,40 +50,41 @@ class chatClient extends Component {
     handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            let value = e.target.value ;           
+            let value = e.target.value;
             this.sendMessage(value);
         }
     }
 
-    sendMessage(value){
+    sendMessage(value) {
         const content = value;
         const chatFromData = this.props.chatData;
         const chatTo = '';
 
-        
+
         this.props.sendChatMessage(chatFromData, chatTo, content);
         const chat = JSON.parse(localStorage.getItem('_chatData'));
         this.props.messagesList(chat.id);
     }
 
-    finalizarChat(){ 
-        const chat = JSON.parse(localStorage.getItem('_chatData')); 
+    finalizarChat() {
+        const chat = JSON.parse(localStorage.getItem('_chatData'));
         this.props.finalizarChatClient(chat.id);
     }
 
-    checkStatus(){
-        console.log('teste');
+    checkStatus() {
+        const chat = JSON.parse(localStorage.getItem('_chatData')); 
+        this.props.checkStatusChat(chat.id);
     }
-    
+
 
     render() {
 
-        const { id, status, name, nameSponsored } = this.props.chatData;
+        const { nameSponsored } = this.props.chatData;
         const listMessages = this.props.listMessages;
-        const chat = JSON.parse(localStorage.getItem('_chatData'));   
-        
+        const chat = JSON.parse(localStorage.getItem('_chatData'));
 
-        if(this.props.chatFinish){
+
+        if (this.props.chatFinishClient) {
             localStorage.removeItem('_chatData');
             return <Redirect to="/" />
         }
@@ -86,10 +102,10 @@ class chatClient extends Component {
                         <div className="cardChat">
 
                             <div className="card-header cardHeader">
-                                <p>#15156 - {nameSponsored}</p>
+                                <p># - {nameSponsored}</p>
                                 <span>
-                                <button type="button" className="btn btn-sm btn-secondary" 
-                                onClick={()=>this.finalizarChat()}>Finalizar</button>
+                                    <button type="button" className="btn btn-sm btn-secondary"
+                                        onClick={() => this.finalizarChat()}>Finalizar</button>
                                 </span>
                             </div>
 
@@ -97,8 +113,8 @@ class chatClient extends Component {
 
                                 <div className="contentChat" id="msg_history">
 
-                                   {listMessages ?
-                                        listMessages.map((message, index) =>{
+                                    {listMessages ?
+                                        listMessages.map((message, index) => {
                                             if (message.from === chat.name) {
                                                 return (
                                                     <div className="outgoing_msg" key={index}>
@@ -108,7 +124,7 @@ class chatClient extends Component {
                                                         </div>
                                                     </div>
                                                 )
-                                            }else{
+                                            } else {
                                                 return (
                                                     <div className="incoming_msg" key={index}>
                                                         <div className="received_msg">
@@ -120,7 +136,7 @@ class chatClient extends Component {
                                             }
 
                                         }) : ''
-                                   }
+                                    }
 
                                 </div>
 
@@ -132,13 +148,13 @@ class chatClient extends Component {
                                     <form onSubmit={this.handleSubmit}>
 
                                         <div className="input-group">
-                                            <input type="text" 
-                                            className="form-control inputChat"
-                                             name="textchat" 
-                                             id="inputChatClient"
-                                             onKeyPress={this.handleKeyPress}
-                                             placeholder="Digite uma Mensagem" 
-                                              />
+                                            <input type="text"
+                                                className="form-control inputChat"
+                                                name="textchat"
+                                                id="inputChatClient"
+                                                onKeyPress={this.handleKeyPress}
+                                                placeholder="Digite uma Mensagem"
+                                            />
 
                                             <div className="input-group-append">
                                                 <button className="input-group-text"
@@ -170,7 +186,7 @@ class chatClient extends Component {
 const mapStateToProps = state => ({
     chatData: state.ChatClient.chatData,
     listMessages: state.ChatClient.listMessages,
-    chatFinish: state.ChatClient.chatFinish,
+    chatFinishClient: state.ChatClient.chatFinishClient,
 })
 
 const mapDispatchToProps = dispatch => (

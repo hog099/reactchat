@@ -39,6 +39,8 @@ class Chatbox extends Component {
         this.props.sendChatMessage(chatFromData, chatTo, content);
     }
 
+
+    
     finalizarChat(){ 
         const currentChat = this.props.currentChat;
         this.props.finalizarChatPainel(currentChat.id);

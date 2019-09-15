@@ -82,6 +82,7 @@ export function sendChatMessage(chatFrom, chatTo, content) {
     
     return dispatch => {
 
+        if(content !== ''){
         // Adicionar mensagem no banco
         chatRef.doc(chatFrom.id).collection('messages').add({
             content,
@@ -92,6 +93,8 @@ export function sendChatMessage(chatFrom, chatTo, content) {
         });
 
         document.getElementById('inputChatClient').value = '';
+
+    }
         
        
 
@@ -139,6 +142,25 @@ export function finalizarChatClient(chatId){
         });
 
         dispatch({ type: 'CHAT_FINISHED', payload: true })
+
+    }
+
+}
+
+
+
+export function checkStatusChat(chatId){
+
+    return dispatch => {
+
+        chatRef.doc(chatId).get().then(chat => {
+           
+            if(chat.data().status === 'finalizado'){
+                dispatch({ type: 'GET_CHAT_STATUS', payload: true })                
+            }
+           
+        });
+
 
     }
 

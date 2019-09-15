@@ -9,33 +9,41 @@
     margin-top: -2.3rem;
 }
 
+
+
+
 .incoming_msg {
         margin: 25px 0 26px;
     }
     
-    .received_msg {
-        background: #94999c;
+.received_msg {
+        background: #e1e3e4;
         display: inline-block;
         padding: 0 0 0 10px;
         vertical-align: top;
-        width: 70%;
-    }
+        width: 60%;
+        margin-left: 0.5rem;
+        border-radius: 3px;
+
+}
     
-    .outgoing_msg{ 
+.outgoing_msg{ 
         overflow:hidden; 
-        margin:26px 0 26px;
-    }
+        /* margin:26px 0 26px; */
+        margin-right: 0.5rem;
+}
     
-    .sent_msg {
+.sent_msg {
         float: right;
         width: 46%;
-      }
+}
     
-    .sent_msg p {
-        background: #0683f8 none repeat scroll 0 0;
+.sent_msg p {
+        background: #3491e8 none repeat scroll 0 0;
         border-radius: 3px;
         font-size: 14px;
-        margin: 0; color:#fff;
+        /* margin-right: 0.5rem;  */
+        color:#fff;
         padding: 5px 10px 5px 12px;
         width:100%;
-    }
+}

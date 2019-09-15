@@ -100,7 +100,7 @@ class Auth extends Component {
                             </form>
 
                             <br />
-                            <a onClick={() => this.changeMode()}><div className="row justify-content-center">
+                            <a href="/#" onClick={() => this.changeMode()}><div className="row justify-content-center">
                                 {this.state.loginMode ? 'Novo usuário? Registrar aqui!' :
                                     'Já é cadastrado? Entrar aqui!'}
                             </div>
@@ -117,9 +117,6 @@ class Auth extends Component {
 
 }
 
-const mapStateToProps = state => ({
-    loadingbarLogin: state.AuthReducer.loadingbarLogin
-})
 
 
 const mapDispatchToProps = dispatch => (

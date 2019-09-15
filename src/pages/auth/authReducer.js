@@ -20,9 +20,12 @@ export default (state = INICIAL_STATE, action) => {
         case 'USER_DETAILS_FETCHED':
             return { ...state, userDetails: action.payload }
 
-
         case 'CHANGE_LOADINGBAR_LOGIN':
             return { ...state, loadingbarLogin: action.payload }
+
+        case 'LOGOUT_USER':
+             localStorage.removeItem(userKey)
+            return { ...state, validToken: action.payload }
 
         default:
             return state

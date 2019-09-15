@@ -5,7 +5,6 @@ import firebase from "../../config/firebaseConfig"
 
 const userRef = firebase.firestore().collection('users');
 const emailRegex = /\S+@\S+\.\S+/
-const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
 
 
 export function login(values) {
@@ -108,7 +107,7 @@ export function signup(values) {
 
 export function logout() {
     firebase.auth().signOut()
-    return { type: 'TOKEN_VALIDATED', payload: false }
+    return { type: 'LOGOUT_USER', payload: false }
 }
 
 

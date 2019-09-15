@@ -17,10 +17,11 @@ class Tickets extends Component {
     openItem(chat) {
         const agent = JSON.parse(localStorage.getItem(userKey));
         
-        if(chat.agent == agent.uid){
+        if(chat.agent === agent.uid){
             this.props.getDataChat(chat.id);
         }else{
             if( window.confirm('Inicar Atendimento?') ){
+                this.props.getDataChat(chat.id);
                 this.props.selectChat(chat.id, agent);
             }
         }

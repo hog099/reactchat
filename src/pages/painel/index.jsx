@@ -9,6 +9,7 @@ import './index.css';
 
 import Tickets from './tickets/index';
 import ChatBox from './chatticket/index';
+import NavbarPainel from './navbarpainel/index';
 
 class Painel extends Component {
 
@@ -20,39 +21,45 @@ class Painel extends Component {
 
     }
 
-   render() {
-        if (!this.props.user) {
+    render() {
+        if (!this.props.user || !this.props.validToken) {
             return <Redirect to="/login" />
         }
 
 
         return (
-            <div className='container-fluid PainelAdmin'>
-                <div className="row justify-content-center">
+            <React.Fragment>
+                
+                <NavbarPainel />
 
-                    <div className="card col-sm col-md cardPainelStyle">
-                        <div className="row">
+                <div className='container-fluid PainelAdmin'>
+                    <div className="row justify-content-center">
 
 
-                            <div className="card col-sm-3 col-md-3 col-xs-3  d-flex containterTickets">
-                                <Tickets />
+                        <div className="card col-sm col-md cardPainelStyle">
+                            <div className="row">
+
+
+                                <div className="card col-sm-3 col-md-3 col-xs-3  d-flex containterTickets">
+                                    <Tickets />
+                                </div>
+
+                                <div className="card col-sm col-md col-xs  d-flex containerBodyMsgs">
+                                    <ChatBox />
+
+                                </div>
+
                             </div>
-
-                            <div className="card col-sm col-md col-xs  d-flex containerBodyMsgs">
-                                <ChatBox />
-
-                            </div>
-
                         </div>
+
+
+
+
+
+
                     </div>
-
-
-
-
-
-
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 
