@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![alt text](https://firebasestorage.googleapis.com/v0/b/reactchat-7d437.appspot.com/o/SharedScreenshot.jpg?alt=media&token=743b13f9-524e-4a14-b5c7-ebf0b8a1b531)
+
 ## Available Scripts
 
 In the project directory, you can run:
