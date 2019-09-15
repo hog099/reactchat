@@ -1,0 +1,24 @@
+.PainelAdmin{
+}
+
+.cardPainelStyle{
+    box-shadow: 0 4px 15px 0 #07224233;
+    border-radius: 3.25rem;   
+    margin: 0.3rem;
+    margin-top: 5%; 
+    padding: 0.2rem;
+    min-height: 35rem;
+}
+
+.containterTickets{
+    margin: 0.1rem;
+    min-height: 35rem;
+    max-height: 35rem;
+    overflow-y: scroll;
+}
+
+.containerBodyMsgs{
+    margin: 0.1rem;
+    min-height: 35rem;
+
+}

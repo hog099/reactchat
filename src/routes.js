@@ -1,18 +1,18 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Auth from './pages/auth/Auth'
-import Start from './pages/Index'
-import HomeClient from './pages/chatClient/Index'
-// import Admin from './pages/app-admin/index'
+import AuthorApp from './pages/auth/authorpainel'
+import Start from './pages/index'
+import HomeClient from './pages/chatClient/index'
+import Painel from './pages/painel/index'
 
 function Routes() {
     return (
         <Switch>
             <Route path="/" exact component={Start} />
             <Route path="/homeClient" exact component={HomeClient} />
-            <Route path="/login" exact component={Auth} />
-            {/* <Route path="/admin" exact component={Admin} /> */}
+            <Route path="/login" exact component={AuthorApp} />
+            <Route path="/painel" exact component={Painel} />
             <Redirect from='*' to='/' />
         </Switch>
     );

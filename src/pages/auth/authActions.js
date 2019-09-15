@@ -104,3 +104,32 @@ export function signup(values) {
 
 
 }
+
+
+export function logout() {
+    firebase.auth().signOut()
+    return { type: 'TOKEN_VALIDATED', payload: false }
+}
+
+
+export function userlogged(user) {
+    return dispatch => {
+        dispatch({ type: 'USER_ALREADY_LOGGED', payload: user })
+    }
+}
+
+
+export function getUserDetails(userLogged) {
+    return dispatch => {
+        userRef.doc(userLogged.email).get().then(response => {
+            const userDetails = response.data()
+            userDetails.password = undefined;
+            dispatch({ type: 'USER_DETAILS_FETCHED', payload: userDetails })
+        })
+    }
+}
+
+
+
+
+

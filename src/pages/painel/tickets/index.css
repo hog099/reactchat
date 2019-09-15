@@ -1,0 +1,31 @@
+.cardTicketItemlist{
+    margin: 0.2rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.textCardTicketItemList{
+    font-size: 0.7rem;
+}
+
+.textCardTicketItemList p{
+    margin: 0.1rem
+}
+
+.cardFooterChatItemList{
+    height: 0.8rem;
+}
+.cardFooterChatItemList p{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 0.6rem;
+}
+
+
+.statusitemlistChataberto{
+    background-color: #f1a008;
+}
+
+.statusitemlistChatatendendo{
+    background-color: #3267f8;
+}

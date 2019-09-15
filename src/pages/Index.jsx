@@ -28,8 +28,8 @@ class Index extends Component {
         this.changeLoading();
 
         const values = {
-            name: e.target.name,
-            nameSponsored: e.target.nameSponsored
+            name: e.target.name.value,
+            nameSponsored: e.target.nameSponsored.value
         }
 
         setTimeout(async()=>{

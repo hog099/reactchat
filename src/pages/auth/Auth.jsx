@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import * as authActions from './authActions'
 import { bindActionCreators } from 'redux'
+
+import { Redirect } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';
 
 
@@ -24,7 +26,7 @@ class Auth extends Component {
     changeMode() {
         this.setState({ loginMode: !this.state.loginMode })
     }
-
+    
 
     async onSubmit(e) {
         e.preventDefault();
@@ -37,10 +39,12 @@ class Auth extends Component {
                 password: e.target.password.value
             }
 
+            await this.props.login(values);
             setTimeout(async () => {
-                await this.props.login(values);
-                this.changeLoading();
+                this.changeLoading();                
             }, 1000);
+
+            return <Redirect to="/Painel" />
 
         } else {
 
