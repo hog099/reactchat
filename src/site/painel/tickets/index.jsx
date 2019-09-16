@@ -17,7 +17,7 @@ class Tickets extends Component {
     openItem(chat) {
         const agent = JSON.parse(localStorage.getItem(userKey));
         
-        if(chat.agent === agent.uid){
+        if(chat.agent === agent.name){
             this.props.getDataChat(chat.id);
         }else{
             if( window.confirm('Inicar Atendimento?') ){
@@ -44,7 +44,8 @@ class Tickets extends Component {
                             <div className="card cardTicketItemlist" key={index} onClick={()=>this.openItem(chat)} >
                                 <div className="textCardTicketItemList"key={index}>
                                     <p>{`#${index+1}-${chat.nameSponsored}`}</p>
-                                    <p>{chat.name}</p>
+                                    <p>Solic: {chat.name} || Agente: {chat.agent} </p>
+                                    {/* <p>Agente: {chat.agent}</p> */}
                                 </div>
                                 <div className={`cardFooterChatItemList statusitemlistChat${chat.status}`}>
                                     <p>{chat.status}</p>

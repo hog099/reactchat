@@ -9,36 +9,15 @@ import './index.css';
 
 class chatClient extends Component {
 
-    state ={
-        checkStatus: ''
-    }
 
     componentWillMount() {
         const chat = JSON.parse(localStorage.getItem('_chatData'));
         if (chat) {
             this.props.setChatData(chat.id);
-        }
-        if (!this.props.chatFinishClient) {
             this.props.messagesList(chat.id);
         }
-
+      
     }
-
-    componentDidMount() {
-        let intervalStatus = setInterval(() => {
-            this.checkStatus();
-        }, 6000);
-
-        this.setState({checkStatus: intervalStatus});
-
-    }
-
-    componentWillUnmount(){
-        if (this.props.chatFinishClient) {
-            clearInterval(this.state.checkStatus);
-        }
-    }
-
 
 
     handleSubmit = e => {
@@ -68,24 +47,20 @@ class chatClient extends Component {
 
     finalizarChat() {
         const chat = JSON.parse(localStorage.getItem('_chatData'));
+        localStorage.removeItem('_chatData');
         this.props.finalizarChatClient(chat.id);
+        window.location.reload();
     }
 
-    checkStatus() {
-        const chat = JSON.parse(localStorage.getItem('_chatData')); 
-        this.props.checkStatusChat(chat.id);
-    }
-
+   
 
     render() {
-
         const { nameSponsored } = this.props.chatData;
         const listMessages = this.props.listMessages;
         const chat = JSON.parse(localStorage.getItem('_chatData'));
 
 
-        if (this.props.chatFinishClient) {
-            localStorage.removeItem('_chatData');
+        if (!chat) {            
             return <Redirect to="/" />
         }
 

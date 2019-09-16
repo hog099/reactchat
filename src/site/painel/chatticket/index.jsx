@@ -52,7 +52,7 @@ class Chatbox extends Component {
         const currentChat = this.props.currentChat;
         const listMessagesPainel = this.props.listMessagesPainel;
         const agent = JSON.parse(localStorage.getItem(userKey));
-
+        
 
         return (
             <React.Fragment>

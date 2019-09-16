@@ -81,10 +81,10 @@ export function getChats() {
 
     return dispatch => {
 
-        chatRef.onSnapshot(docs => {
+        chatRef.orderBy('timestamp', 'desc').onSnapshot(docs => {
             const chatList = []
             docs.forEach(doc => {
-                // console.log(doc.id)
+                // console.log(doc.data())
                 if(doc.data().status !== 'finalizado'){
                 const chat = {
                     id: doc.id,
@@ -136,13 +136,13 @@ export function selectChat(chatId, agent) {
         chatRef.doc(chatId).get().then(chat => {
             //console.log('chat', chat.data())
             if (chat.data().status === 'atendendo') {                
-                if(!chat.data().agent === agent.uid){
+                if(!chat.data().agent === agent.name){
                     toastr.warning('Chat sendo atendido por outro Agente.');
                 }
             } else {
                 chatRef.doc(chatId).update({
                     status: 'atendendo',
-                    agent: agent.uid
+                    agent: agent.name
                 });
                 
             }
